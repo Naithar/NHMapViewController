@@ -10,6 +10,8 @@
 
 @interface NHMapViewAnnotationView : MKAnnotationView
 
+@property (nonatomic, assign) BOOL useCustomAnnotation;
+
 - (void)showPopover;
 
 @end

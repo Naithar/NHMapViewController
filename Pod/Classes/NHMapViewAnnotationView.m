@@ -11,6 +11,7 @@
 
 @interface NHMapViewAnnotationView ()
 
+
 @property (nonatomic, strong) WYPopoverController *popoverController;
 @property (nonatomic, strong) UIViewController *contentController;
 
@@ -30,6 +31,8 @@
 }
 
 - (void)commonInit {
+    _useCustomAnnotation = NO;
+    
     self.contentController = [[UIViewController alloc] init];
     self.contentController.view.backgroundColor = [UIColor whiteColor];
 
@@ -48,6 +51,9 @@
 }
 
 - (void)showPopover {
+    if (!self.useCustomAnnotation) {
+        return;
+    }
     [self.popoverController presentPopoverFromRect:self.bounds
                                             inView:self
                           permittedArrowDirections:WYPopoverArrowDirectionAny
