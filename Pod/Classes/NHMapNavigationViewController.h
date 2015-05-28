@@ -13,6 +13,6 @@
 
 @property (nonatomic, readonly, strong) NHMapViewController *mapViewController;
 
-
 + (Class)mapViewControllerClass;
+
 @end
