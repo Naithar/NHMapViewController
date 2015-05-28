@@ -1,11 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
-use_frameworks!
+#use_frameworks!
 
 target 'NHMapViewController_Example', :exclusive => true do
   pod "NHMapViewController", :path => "../"
 end
 
-target 'NHMapViewController_Tests', :exclusive => true do
+target 'Tests', :exclusive => true do
   pod "NHMapViewController", :path => "../"
 
   pod 'Specta'
