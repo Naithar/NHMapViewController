@@ -98,7 +98,11 @@
 }
 
 - (void)optionsNavigationButtonTouch:(id)sender {
+    __weak __typeof(self) weakSelf = self;
     
+    if ([weakSelf.mapDelegate respondsToSelector:@selector(didTouchOptionsButtonInMapController:)]) {
+        [weakSelf.mapDelegate didTouchOptionsButtonInMapController:weakSelf];
+    }
 }
 
 - (void)viewDidLoad {
