@@ -31,7 +31,17 @@
 
 - (void)commonInit {
     self.contentController = [[UIViewController alloc] init];
-    self.contentController.view.backgroundColor = [UIColor redColor];
+    self.contentController.view.backgroundColor = [UIColor whiteColor];
+
+    [WYPopoverController setDefaultTheme:[WYPopoverTheme theme]];
+    WYPopoverBackgroundView *appearance = [WYPopoverBackgroundView appearance];
+    [appearance setTintColor:[UIColor whiteColor]];
+    [appearance setFillTopColor:[UIColor whiteColor]];
+    [appearance setFillBottomColor:[UIColor whiteColor]];
+    [appearance setOverlayColor:[UIColor clearColor]];
+    [appearance setOuterShadowColor:[[UIColor blackColor] colorWithAlphaComponent:0.35]];
+    [appearance setOuterShadowBlurRadius:2.5];
+    [appearance setOuterCornerRadius:12.5];
     
     self.popoverController = [[WYPopoverController alloc] initWithContentViewController:self.contentController];
     self.popoverController.popoverContentSize = CGSizeMake(100, 100);
