@@ -28,7 +28,7 @@
 - (void)commonInit {
     self.annotationView = [[NHMapViewAnnotationView alloc] init];
     self.annotationView.image = [UIImage imageNamed:@"NHMapView.marker.png"];
-    self.annotationView.canShowCallout = NO;
+    self.annotationView.canShowCallout = YES;
 }
 
 @end

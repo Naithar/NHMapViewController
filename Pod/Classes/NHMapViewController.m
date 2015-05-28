@@ -7,8 +7,6 @@
 //
 
 #import "NHMapViewController.h"
-#import "NHMapViewAnnotation.h"
-
 
 @interface NHMapViewController ()<MKMapViewDelegate>
 
@@ -16,7 +14,7 @@
 @property (nonatomic, assign) CLLocationCoordinate2D markLocation;
 @property (nonatomic, copy) NSString *markName;
 
-@property (nonatomic, strong) MKPointAnnotation *currentAnnotation;
+@property (nonatomic, strong) NHMapViewAnnotation *mark;
 
 @end
 
@@ -71,14 +69,14 @@
     
     self.navigationItem.title = self.markName;
     
-    if (!self.currentAnnotation) {
-        self.currentAnnotation = [[NHMapViewAnnotation alloc] init];
+    if (!self.mark) {
+        self.mark = [[NHMapViewAnnotation alloc] init];
     }
     
-    self.currentAnnotation.coordinate = self.markLocation;
-    self.currentAnnotation.title = self.markName;
+    self.mark.coordinate = self.markLocation;
+    self.mark.title = self.markName;
 
-    [self.mapView addAnnotation:self.currentAnnotation];
+    [self.mapView addAnnotation:self.mark];
 }
 
 - (void)setMapCenterWithLat:(CLLocationDegrees)lat andLon:(CLLocationDegrees)lon {
