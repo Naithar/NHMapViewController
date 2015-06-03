@@ -71,12 +71,11 @@
     
     if (!self.mark) {
         self.mark = [[NHMapViewAnnotation alloc] init];
+        [self.mapView addAnnotation:self.mark];
     }
     
     self.mark.coordinate = self.markLocation;
     self.mark.title = self.markName;
-
-    [self.mapView addAnnotation:self.mark];
 }
 
 - (void)setMapCenterWithLat:(CLLocationDegrees)lat andLon:(CLLocationDegrees)lon {
