@@ -60,7 +60,7 @@
                                                           attribute:NSLayoutAttributeRight
                                                          multiplier:1.0 constant:0]];
     
-    
+    self.mark = [[NHMapViewAnnotation alloc] init];
 }
 
 - (void)setMarkName:(NSString*)name andLocationLat:(CLLocationDegrees)lat andLon:(CLLocationDegrees)lon {
@@ -68,9 +68,8 @@
     self.markLocation = CLLocationCoordinate2DMake(lat, lon);
     
     self.navigationItem.title = self.markName;
-    
-    if (!self.mark) {
-        self.mark = [[NHMapViewAnnotation alloc] init];
+
+    if (![self.mapView.annotations containsObject:self.mark]) {
         [self.mapView addAnnotation:self.mark];
     }
     
@@ -111,15 +110,16 @@
     return nil;
 }
 
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    NSLog(@"selected");
-    
-    if (!view.canShowCallout) {
-        [mapView deselectAnnotation:view.annotation animated:NO];
-        
-        if ([view isKindOfClass:[NHMapViewAnnotationView class]]) {
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {    
+    if (view.canShowCallout) {
+        if ([view isKindOfClass:[NHMapViewAnnotationView class]]
+            && ((NHMapViewAnnotationView*)view).useCustomAnnotation) {
+            [mapView deselectAnnotation:view.annotation animated:NO];
             [((NHMapViewAnnotationView*)view) showPopover];
         }
+    }
+    else {
+        [mapView deselectAnnotation:view.annotation animated:NO];
     }
 }
 

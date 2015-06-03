@@ -28,6 +28,7 @@
 - (void)commonInit {
     self.annotationView = [[NHMapViewAnnotationView alloc] init];
     self.annotationView.image = [UIImage imageNamed:@"NHMapView.marker.png"];
+    self.annotationView.centerOffset = CGPointMake(0, -5);
     self.annotationView.canShowCallout = YES;
 }
 

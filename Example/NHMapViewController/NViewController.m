@@ -28,9 +28,12 @@
                                                    andLon:37.515708];
         
         [navigation.mapViewController setMarkName:@"MSU" andLocationLat:55.703640 andLon:37.515708];
+        navigation.mapViewController.mark.annotationView.useCustomAnnotation = YES;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
                     [navigation.mapViewController setMarkName:@"MSU1" andLocationLat:55.703641 andLon:37.5158];
+            
         });
 
         
