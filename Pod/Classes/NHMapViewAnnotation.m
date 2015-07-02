@@ -8,6 +8,11 @@
 
 #import "NHMapViewAnnotation.h"
 
+#define image(name) \
+[[UIImage alloc] initWithContentsOfFile: \
+[[NSBundle bundleForClass:[NHMapViewAnnotation class]]\
+pathForResource:name ofType:@"png"]]
+
 @interface NHMapViewAnnotation ()
 
 @property (nonatomic, strong) NHMapViewAnnotationView *annotationView;
@@ -27,7 +32,7 @@
 
 - (void)commonInit {
     self.annotationView = [[NHMapViewAnnotationView alloc] init];
-    self.annotationView.image = [UIImage imageNamed:@"NHMapView.marker.png"];
+    self.annotationView.image = image(@"NHMapView.marker");
     self.annotationView.centerOffset = CGPointMake(0, -13);
     self.annotationView.canShowCallout = YES;
 }

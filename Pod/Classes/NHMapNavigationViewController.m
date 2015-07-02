@@ -9,6 +9,12 @@
 #import "NHMapNavigationViewController.h"
 
 
+#define image(name) \
+[[UIImage alloc] initWithContentsOfFile: \
+[[NSBundle bundleForClass:[NHMapNavigationViewController class]]\
+pathForResource:name ofType:@"png"]]
+
+
 @interface NHMapNavigationViewController ()
 
 @property (nonatomic, strong) NHMapViewController *mapViewController;
@@ -78,13 +84,13 @@
     
     
     self.mapViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-                                                               initWithImage: [UIImage imageNamed:@"NHMapView.close.png"]
+                                                               initWithImage: image(@"NHMapView.close")
                                                                style:UIBarButtonItemStylePlain
                                                                target:self
                                                                action:@selector(closeNavigationButtonTouch:)];
     
     self.mapViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                                                initWithImage: [UIImage imageNamed:@"NHMapView.options.png"]
+                                                                initWithImage: image(@"NHMapView.options")
                                                                 style:UIBarButtonItemStylePlain
                                                                 target:self
                                                                 action:@selector(optionsNavigationButtonTouch:)];
